@@ -1,0 +1,72 @@
+{
+  "name": "Bento",
+  "description": "A deliciously modern vanilla Rails stack for your next big idea",
+  "repository": "https://github.com/darokel/bento",
+  "keywords": ["rails", "boilerplate", "ruby", "starter"],
+  "addons": ["heroku-redis", "heroku-postgresql"],
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-activestorage-preview"
+    },
+    {
+      "url": "heroku/ruby"
+    },
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "env": {
+    "EMAIL_RECIPIENTS": {
+      "required": true
+    },
+    "HEROKU_APP_NAME": {
+      "required": true
+    },
+    "HEROKU_PARENT_APP_NAME": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "RAILS_MASTER_KEY": {
+     "required": true
+    },
+    "RAILS_LOG_TO_STDOUT": {
+      "value": "true"
+    },
+    "RAILS_SERVE_STATIC_ASSETS": {
+      "value": "true"
+    },
+    "SMTP_ADDRESS": {
+      "required": true
+    },
+    "SMTP_DOMAIN": {
+      "required": true
+    },
+    "SMTP_PASSWORD": {
+      "required": true
+    },
+    "SMTP_USERNAME": {
+      "required": true
+    },
+    "SECRET_KEY_BASE": {
+      "generator": "secret"
+    },
+    "WEB_CONCURRENCY": {
+      "value": "2"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "FREE"
+    },
+    "worker": {
+      "quantity": 1,
+      "size": "FREE"
+    }
+  },
+  "scripts": {
+    "postdeploy": "bundle exec rake heroku:post_deploy"
+  }
+}

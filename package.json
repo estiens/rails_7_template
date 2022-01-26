@@ -1,0 +1,29 @@
+{
+  "name": "bento",
+  "private": true,
+  "engines": {
+    "node": "16.x"
+  },
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --outdir=app/assets/builds",
+    "build:css": "sass ./app/assets/stylesheets/application.sass.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules",
+    "pretest": "rm -rf .jest-cache",
+    "test": "jest --no-cache",
+    "test:watch": "jest --watch --no-cache",
+    "test:ci": "jest --ci --runInBand --no-cache --coverage"
+  },
+  "dependencies": {
+    "@hotwired/stimulus": "^3.0.1",
+    "@hotwired/turbo-rails": "^7.1.0"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "@babel/preset-env": "^7.15.6",
+    "@testing-library/dom": "^7.21.1",
+    "babel-jest": "^27.2.1",
+    "esbuild": "^0.13.2",
+    "jest": "^27.2",
+    "prettier": "^2.0.5",
+    "sass": "^1.42.1"
+  }
+}
